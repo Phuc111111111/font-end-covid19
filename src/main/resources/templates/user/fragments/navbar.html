@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head></head>
+<body>
+
+<th:block th:fragment="navbar">
+    <!-- header -->
+    <div class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="d-flex">
+                    <div class="header__logo">
+                        <a href="/user/home">
+                            <img src="/user/static/user/image/covid 19.png" class="mt-1 mb-1" alt="" width="40px">
+                        </a>
+                    </div>
+                    <div class="ml-2 mt-3">
+                        <b>PORTAL OF THE MINISTRY OF HEALTH ON THE PASSION OF COVID-19</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header__navbar">
+            <div class="container">
+                <div class="header__navbar-flex d-flex justify-content-between align-items-center">
+                    <div class="main__navbar-menu d-flex text-uppercase align-items-center">
+                        <ul class="d-flex align-items-center list_document_category" style="margin-bottom: 0px !important;">
+                            <li>
+                                <a href="/user/home" class="active" title="Trang chủ">
+                                    <span class="main__navbar-icon">
+                                        <i class="sprite sprite-home"></i>
+                                    </span>
+                                    <span>Trang chủ</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+                    <th:block sec:authorize="isAuthenticated()">
+                        <div class="d-flex">
+                            <div class="mr-2 align-self-center">
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <b class="white" th:utext="${#authentication.getPrincipal().getUsername()}"></b>
+                                </th:block>
+                            </div>
+                            <li class="dropdown dropleft notification-list">
+                                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#"
+                                   role="button" aria-haspopup="false" aria-expanded="false">
+                                    <div class="d-flex">
+
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="/user/my-account/detail" class="dropdown-item">Thông tin cá nhân</a>
+                                    <a href="/logout" class="dropdown-item">Đăng xuất</a>
+                                </div>
+                            </li>
+                        </div>
+                    </th:block>
+
+                    <th:block sec:authorize="!isAuthenticated()">
+                        <div class="d-flex">
+                            <div class="mr-2 align-self-center">
+                                <a href="/login" class="dropdown-item"><b style="color: white">Đăng nhập</b></a>
+                            </div>
+
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>
+
+</body>
+
+</html>

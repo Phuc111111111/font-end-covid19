@@ -1,0 +1,25 @@
+server:
+  port: 8086
+
+zuul:
+  routes:
+    backend:
+      path: /api/**
+      sensitive-headers:
+      url: http://localhost:8085/api
+
+api:
+  getuseruri: http://localhost:8085/api/auths/user
+
+
+spring:
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+    templates_root: src/main/resources/templates/
+  devtools:
+    restart:
+      enabled: true
+
+
+fileUpload :  file:///D://fileupload//image//

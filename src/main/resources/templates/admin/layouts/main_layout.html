@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+
+<head th:replace="templates/admin/fragments/header.html :: header('Viet Nam Covid')"></head>
+<th:block layout:fragment="cssLink"></th:block>
+<body>
+<div th:replace="templates/admin/fragments/navbar.html :: navbar"></div>
+<div id="wrapper">
+    <div th:replace="templates/admin/fragments/slide-menu.html :: slide-menu"></div>
+    <div class="content-page" >
+        <div class="content">
+            <div th:replace="templates/admin/fragments/top-menu.html :: top-menu"></div>
+            <div class="container-fluid mt-5">
+
+                <div class="content" layout:fragment="content">
+
+                </div>
+            </div>
+            <div class="loading d-none">
+                <div id="loading-center">
+                    <div id="loading-center-absolute">
+                        <div class="loader "></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="templates/admin/fragments/footer.html :: footer_scrpit"></div>
+<div th:replace="templates/admin/fragments/footer.html :: footer"></div>
+<th:block layout:fragment="script"></th:block>
+</body>
+</html>

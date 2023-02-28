@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html  lang="vi"  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{templates/admin/layouts/main_layout.html}">
+<body>
+<div layout:fragment="content">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-sm-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col col-sm-9 input-group mb-2">
+                                    <div class="row w-100">
+                                        <div class="col col-sm-3">
+
+                                            <div class="d-flex">
+                                                <div class="input-group-prepend hover-cursor" id="navbar-search-icon"
+                                                     onclick="search()"><span class="input-group-text span-icon-search" id="search"><i class="fas fa-search"></i></span></div>
+                                                <input type="text" class="form-control input-search" placeholder="Tìm kiếm" aria-label="search" aria-describedby="search" name="keySearch">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col col-sm-4">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" th:value="${idDocument}" id="idDocument" >
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+
+                                    <colgroup>
+                                        <col style="width:5%">
+                                        <col style="width:40%">
+                                        <col style="width:40%">
+                                        <col style="width:20%">
+                                    </colgroup>
+
+                                    <tr>
+                                        <th class="font_text font_text_color">Number</th>
+                                        <th class="font_text font_text_color">Content</th>
+                                        <th class="font_text font_text_color">Time</th>
+                                        <th class="font_text font_text_color text-align-center-cls">Hành động</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="body-content">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col col-12 col-sm-12 col-lg-12  d-flex justify-content-center" id="pagination-test">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script">
+    <script type="text/javascript" th:src="@{/admin/static/admin/js/document/list-comment.js}"></script>
+
+</th:block>
+
+</body>
+</html>

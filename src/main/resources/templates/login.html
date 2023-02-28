@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/user/static/user/css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <section id="content">
+        <form th:action="@{'/j_spring_security'}" id="formLogin"  th:method="post">
+            <h1>Login Form</h1>
+            <div>
+                <input type="text" placeholder="Username" required="" id="username"  name="username"/>
+            </div>
+            <div>
+                <input type="password" placeholder="Password" required="" id="password"  name="password"/>
+            </div>
+
+            <div>
+                <input type="button" class="btn btn-warning" onclick="login()" value="Log in"
+                       style="padding: 10px; background: #ffc107; margin-bottom: 15px;cursor: pointer;" />
+            </div>
+            <br>
+            <div>
+                <a  style="padding-bottom:20px" href="/user/register">Đăng ký tài khoản</a>
+            </div>
+        </form>
+
+    </section>
+</div>
+<script>
+
+    function login() {
+        var formData = $('#formLogin').serializeArray();
+        var data = {};
+        $.each(formData,function(i,v) {
+            data[v.name] = v.value;
+        });
+
+        $.ajax({
+            url: '/api/auths',
+            type: 'POST',
+            data: JSON.stringify(data),
+            dataType: "json",
+            contentType: "application/json",
+            success: function (res) {
+
+            },
+            error:function (e) {
+                if (e.status == 200) {
+
+                    localStorage.setItem("eln_token", e.responseText);
+                    $('#formLogin').submit();
+
+                } else  alert("Tài khoản không có quyền truy cập");
+
+            }
+        });
+
+    }
+
+</script>
+</body>
+</html>

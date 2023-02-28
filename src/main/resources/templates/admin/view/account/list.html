@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html  lang="vi"  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{templates/admin/layouts/main_layout.html}">
+<body>
+<div layout:fragment="content">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-sm-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col col-sm-9 input-group mb-2">
+                                    <div class="row w-100">
+                                        <div class="col col-sm-3">
+
+                                                <div class="d-flex">
+                                                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon"
+                                                    onclick="searchAccount()"><span class="input-group-text span-icon-search" id="search"><i class="fas fa-search"></i></span></div>
+                                                    <input type="text" class="form-control input-search" id="key_account" placeholder="search" aria-label="search" aria-describedby="search" name="keySearch">
+                                                </div>
+
+                                        </div>
+                                        <div class="col col-sm-4">
+
+                                        </div>
+                                        <div class="col col-sm-4">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-3"><button class="btn btn-warning w-100 font_text button-height display-center" data-toggle="modal" data-target="#add_new_account" style="border-radius: 4px; font-weight: bold;">Add New Account</button></div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="font_text font_text_color">Number</th>
+                                        <th class="font_text font_text_color">FullName</th>
+                                        <th class="font_text font_text_color">Email</th>
+                                        <th class="font_text font_text_color">Phone</th>
+                                        <th class="font_text font_text_color">Address</th>
+                                        <th class="font_text font_text_color text-align-center-cls">Status</th>
+                                        <th class="font_text font_text_color text-align-center-cls">Action</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="list_accounts">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col col-12 col-sm-12 col-lg-12  d-flex justify-content-center" id="pagination-test">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="add_new_account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h3 class="modal-title" >Add New Account</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                        <div class="modal-body">
+                            <form id="addAccount">
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Username</span> <span style="color: red;">(*)</span></label>
+                                    <input type="text" class="form-control" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="font_text"><span>FullName</span> <span style="color: red;">(*)</span></label>
+                                    <input type="text" class="form-control" name="fullName" required=>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Email</span> <span style="color: red;">(*)</span></label>
+                                    <input type="text" class="form-control" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Password</span> <span style="color: red;">(*)</span></label>
+                                    <input type="password" class="form-control" name="password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Phone</span> <span style="color: red;">(*)</span></label>
+                                    <input type="text" class="form-control" name="phone" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Address</span> </label>
+                                    <input type="text" class="form-control" name="address" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="role">Role</label>
+                                    <select class="form-control" id="role" name="role">
+                                        <option value="USER">USER</option>
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="DOCTOR">DOCTOR</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col col-sm-6">
+                                        <label  class="font_text"><span>Image</span> </label>
+                                        <input type="file" id="image_add"  class="form-control" name="image" onchange="readURL(this, false);"  >
+                                    </div>
+                                    <div class="col col-sm-6">
+                                       <img src="" id="upload_image" nameFile=""  style="max-width: 100% ; max-height: 100%">
+                                    </div>
+                                </div>
+                                <div class="text-center"><button type="button" class="btn btn-warning border-common mb-5 font_text" onclick="addAccount()">Create</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="edit_account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header  text-center" >
+                            <h3 class="modal-title" >Update Info Account </h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                        <div class="modal-body">
+                            <form id="editAccount">
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Username</span> </label>
+                                    <input type="text" class="form-control" name="username" id="username_" required>
+                                    <input type="hidden" class="form-control" name="id" id="idAccount">
+                                </div>
+                                <div class="form-group">
+                                    <label  class="font_text"><span>FullName</span> </label>
+                                    <input type="text" class="form-control" name="fullName" id="fullName_"  required=>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Email</span></label>
+                                    <input type="text" class="form-control" name="email"  id="email_" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Phone</span></label>
+                                    <input type="text" class="form-control" name="phone" id="phone_" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Address</span> </label>
+                                    <input type="text" class="form-control" name="address" id="address_">
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="status_">Status</label>
+                                    <select class="form-control" id="status_" name="status">
+                                        <option value="INACTIVE">INACTIVE</option>
+                                        <option value="ACTIVE">ACTIVE</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="role_">ROLE</label>
+                                    <select class="form-control" id="role_" name="role">
+                                        <option value="USER">USER</option>
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="DOCTOR">
+                                            DOCTOR
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group row">
+
+                                    <div class="col col-sm-6">
+                                        <label  class="font_text"><span>Image</span> </label>
+                                        <input type="file" id="image_add_"  class="form-control" name="image" onchange="readURL(this,true);"  >
+                                    </div>
+                                    <div class="col col-sm-6">
+                                        <img src="" id="upload_image_edit"  nameFile="" style="max-width: 100% ; max-height: 100%">
+                                    </div>
+                                </div>
+                                <div class="text-center"><button type="button" class="btn btn-warning border-common mb-5 font_text" onclick="editAccount()">Update</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script">
+    <script type="text/javascript" th:src="@{/admin/static/admin/js/account/list.js}"></script>
+
+</th:block>
+
+</body>
+</html>

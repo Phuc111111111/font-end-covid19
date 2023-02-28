@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="footer_scrpit">
+
+    <script src="/admin/static/admin/temp-js/app.min.js"></script>
+    <script src="/admin/static/admin/temp-js/bootstrap-datepicker.min.js"></script>
+    <script src="/admin/static/admin/temp-js/bootstrap-datepicker.vi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+    <script src="/admin/static/admin/temp-js/jquery.dataTables.min.js"></script>
+    <script src="/admin/static/admin/temp-js/dataTables.bootstrap4.min.js"></script>
+    <script src="/admin/static/admin/temp-js/dataTables.responsive.min.js"></script>
+    <script src="/admin/static/admin/temp-js/responsive.bootstrap4.min.js"></script>
+    <script src="/admin/static/admin/temp-js/bootstrap-select.min.js"></script>
+    <script src="/admin/static/admin/temp-js/dataTables.checkboxes.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+    <script src="/admin/static/admin/summernote/summernote-bs4.js"></script>
+
+    <script src="/admin/static/admin/js/common.js"></script>
+    <script>
+        $('#content').summernote({
+            height: 200
+        });
+    </script>
+</head>
+<body>
+
+<th:block th:fragment="footer">
+    <footer class="page-footer blue-grey darken-3">
+        <div class="footer-copyright">
+            <div class="container">
+
+            </div>
+        </div>
+    </footer>
+
+</th:block>
+</body>
+</html>

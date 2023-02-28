@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+
+<head th:replace="templates/user/fragments/header.html :: header"></head>
+<th:block layout:fragment="cssLink"></th:block>
+<body>
+<div th:replace="templates/user/fragments/navbar.html :: navbar"></div>
+
+<div class="" layout:fragment="content">
+
+</div>
+
+<div th:replace="templates/user/fragments/footer.html :: footer_scrpit"></div>
+<div th:replace="templates/user/fragments/footer.html :: footer"></div>
+<th:block layout:fragment="script"></th:block>
+</body>
+</html>

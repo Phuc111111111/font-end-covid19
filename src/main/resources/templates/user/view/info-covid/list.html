@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html  lang="vi"  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{templates/admin/layouts/main_layout.html}">
+<body>
+<div layout:fragment="content">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-sm-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col col-sm-9 input-group mb-2">
+                                    <div class="row w-100">
+                                        <div class="col col-sm-3">
+
+                                        </div>
+                                        <div class="col col-sm-4">
+
+                                        </div>
+                                        <div class="col col-sm-4">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-3"><button class="btn btn-warning w-100 font_text button-height display-center" data-toggle="modal" data-target="#add_new_info" style="border-radius: 4px; font-weight: bold;">Add New Info Covid</button></div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="font_text font_text_color">Number</th>
+                                        <th class="font_text font_text_color">NumberOfNfections</th>
+                                        <th class="font_text font_text_color">NumberRecoveredCase</th>
+                                        <th class="font_text font_text_color">NumberOfDeaths</th>
+                                        <th class="font_text font_text_color text-align-center-cls">Action</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="list_info_covid">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col col-12 col-sm-12 col-lg-12  d-flex justify-content-center" id="pagination-test">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="add_new_info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h3 class="modal-title" >Add New Info Covid</h3>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                        <div class="modal-body">
+                            <form id="addInfoCovid">
+                                <div class="form-group">
+                                    <label  class="font_text"><span>NumberOfNfections</span> <span style="color: red;">(*)</span></label>
+                                    <input type="number" class="form-control" name="numberOfNfections" required>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="font_text"><span>NumberRecoveredCase</span> <span style="color: red;">(*)</span></label>
+                                    <input type="number" class="form-control" name="numberRecoveredCase" required>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="font_text"><span>NumberOfDeaths</span> <span style="color: red;">(*)</span></label>
+                                    <input type="number" class="form-control" name="numberOfDeaths" required>
+                                </div>
+
+                                <div class="text-center"><button type="button" class="btn btn-warning border-common mb-5 font_text" onclick="addInfoCovid()">Create</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="edit_info_covid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header  text-center" >
+                            <h3 class="modal-title" >Update Info Covid </h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                        <div class="modal-body">
+                            <form id="editInfoCovid">
+                                <div class="form-group">
+                                    <label  class="font_text"><span>NumberOfNfections</span> </label>
+                                    <input type="number" class="form-control" name="numberOfNfections" id="numberOfNfections_" required>
+                                    <input type="hidden" class="form-control" name="id" id="id_info_covid">
+                                </div>
+                                <div class="form-group">
+                                    <label  class="font_text"><span>NumberRecoveredCase</span> </label>
+                                    <input type="number" class="form-control" name="numberRecoveredCase" id="numberRecoveredCase_"  required>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="font_text"><span>NumberOfDeaths</span></label>
+                                    <input type="number" class="form-control" name="numberOfDeaths"  id="numberOfDeaths_" required>
+                                </div>
+                                <div class="text-center"><button type="button" class="btn btn-warning border-common mb-5 font_text" onclick="editInfoCovid()">Update</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script">
+    <script type="text/javascript" th:src="@{/admin/static/admin/js/info-covid/list.js}"></script>
+</th:block>
+
+</body>
+</html>

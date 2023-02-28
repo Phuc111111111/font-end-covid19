@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html  lang="vi"  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{templates/user/layouts/main_layout.html}"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+<div layout:fragment="content">
+    <div class="main">
+        <div class="container mt-5" style="min-height: 550px;">
+            <input  type="hidden" class="idDoctor"  th:value="${id}">
+            <div>
+                <b>Thông tin người dùng</b>
+            </div>
+            <div class="main__aside-layout d-flex">
+                <th:block sec:authorize="isAuthenticated()">
+                    <input  type="hidden" class="idUser" th:value="${#authentication.getPrincipal().getId()}"></input>
+                </th:block>
+                <div class="info_left" style="margin-right: 100px;">
+                    <div class="img_doctor">
+                        <img src="#" style="width: 150px; height: 150px;border-radius: 50%;" id="image_user">
+                    </div>
+                    <div class="btn-chat-doctor text-center mt-2">
+                        <button class="btn btn-success" style="background: #095aaa !important;" ><a href="/user/chat" style="color:white"> Send message</a></button>
+                    </div>
+                </div>
+
+                <div class="info_right" style="width: 70%;">
+                    <form>
+                        <div class="form-group">
+                            <label for="fullname"><h6><b>Full name</b></h6></label>
+                            <input type="text" class="form-control" id="fullname"   disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><h6><b>Email</b></h6></label>
+                            <input type="text" class="form-control" id="email"   disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="address"><h6><b>Address</b></h6></label>
+                            <input type="text" class="form-control" id="address" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone"><h6><b>Phone</b></h6></label>
+                            <input type="text" class="form-control" id="phone"  isabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="description"><b>Description</b></label>
+                            <textarea class="form-control" id="description" rows="3" disabled></textarea>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<th:block layout:fragment="script">
+    <script type="text/javascript" th:src="@{/user/static/user/script/account.js}"></script>
+</th:block>
+</body>
+</html>

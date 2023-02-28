@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="slide-menu">
+    <div>
+        <div class="left-side-menu" >
+            <!-- LOGO -->
+            <div class="logo-box">
+                <input type="hidden" class="check-load-ready" value="1">
+
+                <a href="/admin/home" class="logo logo-light text-center">
+                    <span class="logo-sm">
+                        <img src="" alt="" height="60">
+                    </span>
+                    <span class="logo-lg">
+                          <img th:src="@{/admin/static/admin/images/covid 19.png}" alt="" height="52">
+                    </span>
+                </a>
+            </div>
+
+            <div class="h-100" data-simplebar>
+
+                <!-- User box -->
+                <div class="user-box text-center">
+                    <img src="" alt="user-img" title="Mat Helme"
+                         class="rounded-circle avatar-md">
+                    <p class="text-reset">Admin Head</p>
+                </div>
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <ul  id="side-menu">
+                        <li>
+                        <a href="#listNewPaper" data-toggle="collapse">
+                            <i class="far fa-newspaper"></i><span>User</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse " id="listNewPaper">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a class="menu-item" data-code="#" href="/admin/accounts">
+                                        <i class="ri-pencil-ruler-2-line"></i>
+                                        <span>List Account</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+                        <li>
+                            <a href="#list-info-covid" data-toggle="collapse">
+                                <i class="far fa-newspaper"></i><span>Info Covid</span>
+
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse " id="list-info-covid">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a class="menu-item" data-code="#" href="/admin/info-covid">
+                                            <i class="ri-pencil-ruler-2-line"></i>
+                                            <span>List Info Covid</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="#list-document" data-toggle="collapse">
+                                <i class="far fa-newspaper"></i><span>Document</span>
+
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse " id="list-document">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a class="menu-item" data-code="#" href="/admin/documents">
+                                            <i class="ri-pencil-ruler-2-line"></i>
+                                            <span>List Document</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="menu-item" data-code="#" href="/admin/document-category">
+                                            <i class="ri-pencil-ruler-2-line"></i>
+                                            <span>List Category</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

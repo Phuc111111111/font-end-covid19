@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html  lang="vi"  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{templates/admin/layouts/main_layout.html}">
+<body>
+
+<th:block layout:fragment="cssLink">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <link href="/admin/static/admin/css/editor.css" type="text/css" rel="stylesheet"/>
+</th:block>
+<div layout:fragment="content">
+
+
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-sm-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <input  type="hidden" class="idDocument"  th:value="${id}">
+                                <form action="#" id="formEditDocument">
+
+                                <div class="form-group">
+                                    <label for="title">Name Document<span style="color: red;">(*)</span></label>
+                                    <input type="text" class="form-control" id="title"  name="title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Image<span style="color: red;">(*)</span></label>
+                                    <input type="file" onchange="readURL(this);"  class="form-control" id="imageFile" name="imageFile">
+                                    <img src="" id="upload_image" nameFile="" style="max-width: 100% ; max-height: 100%">
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="statusDocument">Document Category</label>
+                                    <select class="form-control" name="categoryId" id="categoryId">
+                                        <option value="1">Active</option>
+                                        <option value="2">Inactive</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="statusDocument">Status</label>
+                                    <select class="form-control" name="status" id="statusDocument">
+                                        <option value="ACTIVE">Active</option>
+                                        <option value="INACTIVE">Inactive</option>
+                                    </select>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="txtEditor">Content<span style="color: red;">(*)</span></label>
+                                    <textarea class="form-control" id="txtEditor" rows="3"></textarea>
+                                </div>
+
+                            </form>
+                            <button class="btn btn-warning save" onclick="edit() ">Lưu</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" th:src="@{/admin/static/admin/js/document/editor.js}"></script>
+
+    <script type="text/javascript" th:src="@{/admin/static/admin/js/document/edit.js}"></script>
+    <script type="text/javascript" th:src="@{/admin/static/admin/js/document/common.js}"></script>
+</th:block>
+
+</body>
+</html>

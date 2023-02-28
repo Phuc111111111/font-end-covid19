@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="top-menu">
+<div>
+    <div class="navbar-custom">
+        <div class="container-fluid">
+
+
+
+                <ul class="list-unstyled topnav-menu float-right mb-0">
+                    <div class="d-flex">
+                        <div class="mr-2 align-self-center">
+
+                        </div>
+                         <li class="dropdown dropleft notification-list">
+                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#"
+                           role="button" aria-haspopup="false" aria-expanded="false">
+                            <div class="d-flex">
+                                <div>
+                                    <img  src="/admin/static/admin/images/img.png" alt="user-image" class="rounded-circle">
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="/logout" class="dropdown-item">Đăng xuất</a>
+                        </div>
+                    </li>
+                    </div>
+                </ul>
+
+            </div>
+
+            <!-- LOGO -->
+            <div class="logo-box">
+
+
+                <a href="./0-layouts-dashboard.html" class="logo logo-light text-center">
+                    <span class="logo-sm">
+                      <img src="" alt="" height="60">
+                    </span>
+                            <span class="logo-lg">
+                      <img th:src="@{/admin/static/admin/images/covid 19.png}" alt="" height="52">
+                    </span>
+                </a>
+            </div>
+
+            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                <li>
+                    <button class="button-menu-mobile waves-effect waves-light">
+                        <i class="fe-menu"></i>
+                    </button>
+                </li>
+
+                <li>
+                    <!-- Mobile menu toggle (Horizontal Layout)-->
+                    <a class="navbar-toggle nav-link" data-toggle="collapse" data-target="#topnav-menu-content">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </li>
+
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+</th:block>
+</body>
+</html>

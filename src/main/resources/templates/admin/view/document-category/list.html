@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html  lang="vi"  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{templates/admin/layouts/main_layout.html}">
+<body>
+<div layout:fragment="content">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-sm-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col col-sm-9 input-group mb-2">
+                                    <div class="row w-100">
+                                        <div class="col col-sm-3">
+
+                                            <div class="d-flex">
+                                                <div class="input-group-prepend hover-cursor" id="navbar-search-icon"
+                                                     onclick="searchDocumentCategory()"><span class="input-group-text span-icon-search" id="search"><i class="fas fa-search"></i></span></div>
+                                                <input type="text" class="form-control input-search" id="key_document_cate" placeholder="Search" aria-label="search" aria-describedby="search" name="keySearch">
+                                            </div>
+
+                                        </div>
+                                        <div class="col col-sm-4">
+
+                                        </div>
+                                        <div class="col col-sm-4">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-3"><button class="btn btn-warning w-100 font_text button-height display-center" data-toggle="modal" data-target="#add_new_document-cate" style="border-radius: 4px; font-weight: bold;">Add New Category Document</button></div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="font_text font_text_color">STT</th>
+                                        <th class="font_text font_text_color">Name</th>
+                                        <th class="font_text font_text_color text-align-center-cls">Action</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody id="list_document_cates">
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="add_new_document-cate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h3 class="modal-title" >Add New Category Document</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                        <div class="modal-body">
+                            <form id="addDocumentCate">
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Name</span> <span style="color: red;">(*)</span></label>
+                                    <input type="text" class="form-control" name="name" required>
+                                </div>
+                                <div class="text-center"><button type="button" class="btn btn-warning border-common mb-5 font_text" onclick="addDocumentCategory()">Create</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="edit_document-cate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header  text-center" >
+                            <h3 class="modal-title" >Update Info Category Document</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                        <div class="modal-body">
+                            <form id="editDocumentCategory">
+                                <div class="form-group">
+                                    <label  class="font_text"><span>Name</span> </label>
+                                    <input type="text" class="form-control" name="name" id="name_" required>
+                                    <input type="hidden" class="form-control" name="id" id="idDocumentCate">
+                                </div>
+
+                                <div class="text-center"><button type="button" class="btn btn-warning border-common mb-5 font_text" onclick="editDocumentCategory()">Update</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script">
+    <script type="text/javascript" th:src="@{/admin/static/admin/js/documentCategory/list.js}"></script>
+
+</th:block>
+
+</body>
+</html>
