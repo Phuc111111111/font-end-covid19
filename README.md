@@ -30,8 +30,8 @@ QUẢN LÝ THÔNG TIN VỀ CÁC BÀI VIẾT COVID,
 
 Quản lý Thông tin NGƯỜI DÙNG
 
--Thêm sửa xóa thông tin của doctor và user, thiết lập trạng thái của người dùng,
--tìm kiếm , phân trang
+- Thêm sửa xóa thông tin của doctor và user, thiết lập trạng thái của người dùng,
+- tìm kiếm , phân trang
 
 CHỨC NĂNG NGƯỜI DÙNG
 
